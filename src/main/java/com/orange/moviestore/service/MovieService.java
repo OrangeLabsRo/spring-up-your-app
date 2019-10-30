@@ -1,10 +1,12 @@
 package com.orange.moviestore.service;
 
 import com.orange.moviestore.model.Movie;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class MovieService {
     public List<Movie> getMovieList() {
         Movie movie1 = new Movie();
