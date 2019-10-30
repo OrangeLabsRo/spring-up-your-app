@@ -79,3 +79,23 @@ This branch describes how a REST controller is created using Spring.
     
 ### Files created in this branch:
   * [application.yml](./src/main/resources/application.yml) ~ The Spring application configuration file
+  
+## Development 05
+
+This branch describe how we can connect to a MongoDB from a Spring application.
+
+### How did we get here:
+  * We added Spring Data dependency for MongoDB in our  [pom.xml](./pom.xml) file
+  * We added a new field to Movie model and mark it as id with @Id annotation.
+  * We created a repository interface who will provide basic operations for our database.
+  * We removed the dummy data from the movie service and called the movie repository to provide data from our DB.
+  * We added spring.data.mongodb properties in [application.properties](./src/main/resources/application.yml) file.
+  * We implemented CommandLineRunner interface in Application class and overrode run method to insert some dummy data to our DB after the startup.
+  
+ ### Check if it works for you:
+  * Go to Application.java class and hit **CTRL + SHIFT + F10**
+  * Open your favorite browser and access http://localhost:8090/movie
+    * You should see the movies in JSON format.
+    
+ ### Files created in this branch:
+  * [MoviesRepository.java](./src/main/java/com/orange/moviestore/repository/MovieRepository.java) ~ Movies Repository interface - Provide CRUD operations to the database. 

@@ -1,6 +1,12 @@
 package com.orange.moviestore.model;
 
+import org.springframework.data.annotation.Id;
+
 public class Movie {
+
+    @Id
+    private String id;
+
     private String title;
 
     private String director;
