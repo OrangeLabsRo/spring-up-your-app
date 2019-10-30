@@ -38,3 +38,24 @@ The service represents the component of the application responsible with the bus
   
 ### More useful links:
   * [Model View Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+
+## Development 03
+
+This branch describes how Spring is added to a maven project and how Spring Dependency injection is used. The principle behind Spring Events is also described.
+
+### How did we get here:
+  * We created the maven [pom.xml](./pom.xml) file.
+  * We added the Spring web dependency in our [pom.xml](./pom.xml) file
+  * We removed all code in the [Application main function](./src/main/java/com/orange/moviestore/Application.java) app and added the Spring boot app annotation and run.
+  * We annotated all service classes with *@Service*
+  * We added the *ApplicationStartedEvent* listener to the [View Class](./src/main/java/com/orange/moviestore/View.java)
+    
+### Check if it works for you:
+  * Go to Application.java class and hit **CTRL + SHIFT + F10**
+       * You should get the Spring Boot logo and specific Spring logs in the console output.
+       * You should get the ***User Movies*** list in the end of the console output.
+### Files created in this branch:
+  * pom.xml ~ A Project Object Model or POM is the fundamental unit of work in Maven. It is an XML file that contains information about the project and configuration details used by Maven to build the project. It contains default values for most projects. Examples for this is the build directory, which is target; the source directory, which is src/main/java; the test source directory, which is src/test/java; and so on. Find out more [here](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html).
+### More useful links:
+  * [About Maven](https://maven.apache.org/what-is-maven.html)
+  * [Spring boot example from Spring.io](https://spring.io/guides/gs/spring-boot/)
