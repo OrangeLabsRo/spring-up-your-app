@@ -59,3 +59,23 @@ This branch describes how Spring is added to a maven project and how Spring Depe
 ### More useful links:
   * [About Maven](https://maven.apache.org/what-is-maven.html)
   * [Spring boot example from Spring.io](https://spring.io/guides/gs/spring-boot/)
+
+## Development 04
+
+This branch describes how a REST controller is created using Spring.
+
+### How did we get here:
+  * We removed the View.java file as we no longer need to print the movies in the console, we're moving to WEB
+  * We changed the movie controller from *@Service* to *@RestController*
+  * We annotate the get method of the movie controller with the *@GetMapping*
+  * We configured the port we want the server to work on: 8090
+  
+### Check if it works for you:
+  * Go to Application.java class and hit **CTRL + SHIFT + F10**
+    * You should get the Spring Boot logo and specific Spring logs in the console output.
+    * You should see the ***"Started Application in ... seconds"*** log.
+  * Open your favorite browser and access http://localhost:8090/movie
+    * You should see the movies in JSON format.
+    
+### Files created in this branch:
+  * [application.yml](./src/main/resources/application.yml) ~ The Spring application configuration file
