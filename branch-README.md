@@ -42,7 +42,7 @@ The service represents the component of the application responsible with the bus
   
 ### More useful links:
   * [Model View Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
-
+  
 ## Development 03
 
 This branch describes how Spring is added to a maven project and how Spring Dependency injection is used. The principle behind Spring Events is also described.
@@ -84,6 +84,7 @@ This branch describes how a REST controller is created using Spring.
   
 ## Development 05
 
+
 This branch describe how we can connect to a MongoDB from a Spring application.
 
 ### How did we get here:
@@ -100,4 +101,74 @@ This branch describe how we can connect to a MongoDB from a Spring application.
     * You should see the movies in JSON format.
     
  ### Files created in this branch:
+
   * MoviesRepository.java ~ Movies Repository class - Provide CRUD operations to the database. 
+  
+## Development 06
+
+In this branch we show what data model structure we need for the business objects and for our DTOs
+
+### How did we get here:
+  * Created DTO files with the help of http://www.jsonschema2pojo.org/
+  * Modified and added some fields to the Movie class
+  * Removed the CommandLineRunner from our application
+  * Created the OMDBClient interface, describing what we would like our client do do
+  * Added a static list of movies in application.yml
+
+### Check if it works for you:
+  * Run the application by hitting **SHIFT + F10**
+  * Open a browser and access http://localhost:8090/movie
+    * You should see an empty list []
+    
+## Development 07
+
+In this branch we show how easy it is to make REST calls with feign
+
+### How did we get here:
+  * Added the required annotations to OMDBClient and Application
+  * Added extra business objects to represent the data we want our API to offer
+  * Added dependency management to the POM
+
+### Check if it works for you:
+  * Run the application by hitting **SHIFT + F10**
+  * Open a browser and access http://localhost:8090/movie
+    * You should see an empty list []
+    
+## Development 08
+
+In this branch we map raw data from the client to usable data for our API
+
+### How did we get here:
+  * Created a service that can use the omdb client to provide all the media content we need
+  * Read properties from application.yml using a configuration class
+
+### Check if it works for you:
+  * Run the application by hitting **SHIFT + F10**
+  * Open a browser and access http://localhost:8090/movie
+    * You should see an empty list []
+    
+## Development 09
+
+In this branch we schedule a task that refreshes the data in our MongoDb
+
+### How did we get here:
+  * Created a service that refreshes the database at a fixed interval
+
+### Check if it works for you:
+  * Run the application by hitting **SHIFT + F10**
+  * You should see refresh messages in the logs, indicating that the scheduled task is working
+  
+## Development 10
+
+In this branch we tie it all together by modifying our original endpoint to retrieve data from our database
+
+### How did we get here:
+  * Added another query method for our DB connector, providing the ability to search by title
+  * Added another method to the service that uses the DB connector, using the method defined at the previous step
+  * Added a "retrieve all" and a "search by title" option to our main controller
+
+### Check if it works for you:
+  * Run the application by hitting **SHIFT + F10**
+  * Open a browser and access http://localhost:8090/movie
+    * You should see a list with all our movies and shows
+    * Adding the "?title=_something_" paramete should filter the results
