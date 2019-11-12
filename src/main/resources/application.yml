@@ -1,7 +1,28 @@
-server:
-  port: 8090
+server.port: 8090
 
-spring:
-  data:
-    mongodb:
-      database: orange-movie
+spring.data.mongodb.host: 127.0.0.1
+spring.data.mongodb.port: 27017
+spring.data.mongodb.database: orange-movies
+
+media-service:
+  available-media:
+    - titanic
+    - avatar
+    - interstellar
+    - the martian
+    - gatsby
+    - gladiator
+    - braveheart
+    - inception
+    - memento
+    - two and a half men
+    - star wars
+    - the avengers
+    - american sniper
+    - john wick
+    - the big bang theory
+  check-frequency: 60000
+
+omdb:
+  apiKey: 69209ae6
+  url: http://www.omdbapi.com

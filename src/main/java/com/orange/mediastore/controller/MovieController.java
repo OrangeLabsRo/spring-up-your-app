@@ -1,7 +1,7 @@
-package com.orange.moviestore.controller;
+package com.orange.mediastore.controller;
 
-import com.orange.moviestore.model.Movie;
-import com.orange.moviestore.service.MovieService;
+import com.orange.mediastore.model.Movie;
+import com.orange.mediastore.service.MovieService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

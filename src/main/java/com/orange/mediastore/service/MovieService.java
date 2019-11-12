@@ -1,10 +1,9 @@
-package com.orange.moviestore.service;
+package com.orange.mediastore.service;
 
-import com.orange.moviestore.model.Movie;
-import com.orange.moviestore.repository.MovieRepository;
+import com.orange.mediastore.model.Movie;
+import com.orange.mediastore.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
