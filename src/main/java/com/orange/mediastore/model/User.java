@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.validation.constraints.NotEmpty;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 @Document(collection = "users")
 public class User implements UserDetails {
@@ -25,9 +26,19 @@ public class User implements UserDetails {
     @NotEmpty
     private String password;
 
+    private Set<String> favouriteMovieIds;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("USER"));
+    }
+
+    public Set<String> getFavouriteMovieIds() {
+        return favouriteMovieIds;
+    }
+
+    public void setFavouriteMovieIds(Set<String> favouriteMovieIds) {
+        this.favouriteMovieIds = favouriteMovieIds;
     }
 
     public void setPassword(String password) {
