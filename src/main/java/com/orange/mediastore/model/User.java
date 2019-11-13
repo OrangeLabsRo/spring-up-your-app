@@ -30,6 +30,10 @@ public class User implements UserDetails {
         return Collections.singletonList(new SimpleGrantedAuthority("USER"));
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String getPassword() {
         return password;
