@@ -13,13 +13,14 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.orange.mediastore.TestUtils.createUser;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataMongoTest
 public class UserRepositoryTest {
     private final Set<String> MEDIAS = new HashSet<>(Arrays.asList("id1", "id2"));;
-    private User USER = createUser("Alex");
+    private User USER = createUser("Alex", "Test@123!");
 
     @Autowired
     private UserRepository userRepository;
@@ -32,14 +33,6 @@ public class UserRepositoryTest {
     @After
     public void tearDown() throws Exception {
         userRepository.delete(USER);
-    }
-
-    private User createUser(String username) {
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword("Test@123!");
-        user.setFavouriteMovieIds(new HashSet<>(Arrays.asList("id1", "id2")));
-        return user;
     }
 
     @Test
