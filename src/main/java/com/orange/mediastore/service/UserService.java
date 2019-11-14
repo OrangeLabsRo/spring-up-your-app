@@ -1,5 +1,7 @@
 package com.orange.mediastore.service;
 
+import com.orange.mediastore.exceptions.UserAlreadyExistsException;
+import com.orange.mediastore.exceptions.UserNotLoggedInException;
 import com.orange.mediastore.model.User;
 import com.orange.mediastore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
         if(user == null) {
-            throw new RuntimeException("Username not found!");
+            throw new UsernameNotFoundException("Username not found!");
         }
         return user;
     }
@@ -36,7 +38,7 @@ public class UserService implements UserDetailsService {
     public void register(User user) {
         User existingUser = userRepository.findByUsername(user.getUsername());
         if(existingUser != null) {
-            throw new RuntimeException("Username already in use");
+            throw new UserAlreadyExistsException("Username already in use: " + user.getUsername());
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
@@ -45,7 +47,7 @@ public class UserService implements UserDetailsService {
     public User currentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication == null) {
-            throw new RuntimeException("No user is logged in");
+            throw new UserNotLoggedInException("No user is logged in");
         }
         String username = authentication.getName();
         return userRepository.findByUsername(username);
