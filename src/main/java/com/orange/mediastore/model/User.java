@@ -28,6 +28,10 @@ public class User implements UserDetails {
 
     private Set<String> favouriteMovieIds;
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("USER"));
