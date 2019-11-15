@@ -1,15 +1,17 @@
 package com.orange.moviestore.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.Set;
 
-@Document(collection = "movies")
+@Document(collection = "movies_3")
 public class Movie {
     @Id
     private String id;
+    @Indexed(unique = true)
     private String title;
     private String director;
     private LocalDate release;
