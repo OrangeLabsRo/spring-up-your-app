@@ -15,6 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String API_ENDPOINT =  API_V1 + "/**";
     private static final String[] ENDPOINTS_NOAUTH = {
             "/register",
+            "/ui/login",
             "/v2/api-docs",
             "/swagger-resources",
             "/swagger-resources/configuration/ui",
