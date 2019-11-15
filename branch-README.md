@@ -241,3 +241,20 @@ In this branch we will create a test for the controller layer of the application
 
 ### Files created in this branch:
   * UserControllerTest.java
+  
+  
+## Development 19
+
+In this branch we will create an integration test in order to check that the application is working properly from the controller until it reach the database (UserControllerIT).
+
+### How did we get here:
+  * Create a test class UserControllerIT
+  * Use custom Spring annotation(@SpringBootTest, @TestPropertySource, @AutoConfigureMockMvc) for load the entire SpringContext and set a custom property file.
+  * Here we can check if the request which pass through our application from the controller until the database behaves as we expect.
+
+### Check if it works for you:
+  * Run the test by hitting **CTRL + SHIFT + F10**
+  * The test should pass (be green)
+
+### Files created in this branch:
+  * UserControllerIT.java

@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -36,6 +37,9 @@ public class UserControllerIT {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     private String username = "anca" + UUID.randomUUID();
 
     private User USER1 = createUser(username, "zcxzcvzxc");
@@ -43,8 +47,9 @@ public class UserControllerIT {
 
     @After
     public void tearDown() throws Exception {
-        User user = userRepository.findByUsername(USER1.getUsername());
-        userRepository.delete(user);
+//        User user = userRepository.findByUsername(USER1.getUsername());
+//        userRepository.delete(user);
+        mongoTemplate.dropCollection("users");
     }
 
     @Test
