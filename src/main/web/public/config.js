@@ -1,4 +1,4 @@
 window.config = {
-    baseURL: "http://35.246.96.173:80/",
+    baseURL: "http://localhost:8090/",
     platform: ""
 };
