@@ -172,3 +172,21 @@ In this branch we tie it all together by modifying our original endpoint to retr
   * Open a browser and access http://localhost:8090/movie
     * You should see a list with all our movies and shows
     * Adding the "?title=_something_" paramete should filter the results
+    
+
+## Development 16
+
+In this branch we will create a test for the repository layer of the application (UserRepository).
+
+### How did we get here:
+  * Create Test class UserRepositoryTest
+  * Create a test profile for the integration test with the database
+  * Use custom Spring annotation(@DataMongoTest, @ActiveProfile) for testing a slice of the application
+  
+### Check if it works for you:
+  * Run the test by hitting **CTRL + SHIFT + F10**
+  * The test should pass (be green)
+  
+### Files created in this branch:
+  * UserRepository.test, application-test.properties
+  
