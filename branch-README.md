@@ -197,7 +197,7 @@ In this branch we will create a Controller Advice used for handling exceptions.
 In this branch we will create a test for the repository layer of the application (UserRepository).
 
 ### How did we get here:
-  * Create Test class UserRepositoryTest
+  * Create a test class UserRepositoryTest
   * Create a test profile for the integration test with the database
   * Use custom Spring annotation(@DataMongoTest, @ActiveProfile) for testing a slice of the application
   
@@ -206,5 +206,21 @@ In this branch we will create a test for the repository layer of the application
   * The test should pass (be green)
   
 ### Files created in this branch:
-  * UserRepository.test, application-test.properties
+  * UserRepository.java, application-test.properties
   
+
+## Development 17
+
+In this branch we will create a test for the service layer of the application (UserService).
+
+### How did we get here:
+  * Create a test class UserServiceTest
+  * Use custom Spring annotation(@Mock, @InjectMocks) for create unitary tests
+  * For unit tests, Spring context is not loaded at all
+
+### Check if it works for you:
+  * Run the test by hitting **CTRL + SHIFT + F10**
+  * The test should pass (be green)
+
+### Files created in this branch:
+  * UserServiceTest.java, TestUtils.java
