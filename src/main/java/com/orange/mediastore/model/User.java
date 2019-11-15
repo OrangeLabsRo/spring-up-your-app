@@ -1,5 +1,7 @@
 package com.orange.mediastore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -13,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Document(collection = "users")
 public class User implements UserDetails {
 
@@ -32,6 +35,7 @@ public class User implements UserDetails {
         this.username = username;
     }
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("USER"));
