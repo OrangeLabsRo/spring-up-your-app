@@ -172,3 +172,89 @@ In this branch we tie it all together by modifying our original endpoint to retr
   * Open a browser and access http://localhost:8090/movie
     * You should see a list with all our movies and shows
     * Adding the "?title=_something_" paramete should filter the results
+    
+## Development 15
+
+In this branch we will create a Controller Advice used for handling exceptions.
+
+### How did we get here:
+  * Create custom exceptions like: UserAlreadyExistsException, UserNotLoggedInException
+  * Create a Controller Advice which will intercept these exceptions that will be thrown by the application when
+  the constraints are violated
+  
+### Check if it works for you:
+  * Run the application by hitting **SHIFT + F10**
+  * Open a browser and access swagger-ui: http://localhost:8090/swagger-ui.html
+       * You should access register endpoint and create an user. The request should execute successfully
+       * Try to register again the same user. You should receive 409, being intercepted by the controller advice
+  
+### Files created in this branch:
+  * RestExceptionHandler.java, UserNotLoggedInException.java, UserAlreadyExistsException.java
+    
+
+## Development 16
+
+In this branch we will create a test for the repository layer of the application (UserRepository).
+
+### How did we get here:
+  * Create a test class UserRepositoryTest
+  * Create a test profile for the integration test with the database
+  * Use custom Spring annotation(@DataMongoTest, @ActiveProfile) for testing a slice of the application
+  
+### Check if it works for you:
+  * Run the test by hitting **CTRL + SHIFT + F10**
+  * The test should pass (be green)
+  
+### Files created in this branch:
+  * UserRepository.java, application-test.properties
+  
+
+## Development 17
+
+In this branch we will create a test for the service layer of the application (UserService).
+
+### How did we get here:
+  * Create a test class UserServiceTest
+  * Use custom Spring annotation(@Mock, @InjectMocks) for create unitary tests
+  * For unit tests, Spring context is not loaded at all
+
+### Check if it works for you:
+  * Run the test by hitting **CTRL + SHIFT + F10**
+  * The test should pass (be green)
+
+### Files created in this branch:
+  * UserServiceTest.java, TestUtils.java
+  
+## Development 18
+
+In this branch we will create a test for the controller layer of the application (UserController).
+
+### How did we get here:
+  * Create a test class UserControllerTest
+  * Use custom Spring annotation(@WebMvcTest) for load just a slice of Spring context
+  * Only Spring MVC and web context are loaded for test the requests
+
+
+### Check if it works for you:
+  * Run the test by hitting **CTRL + SHIFT + F10**
+  * The test should pass (be green)
+
+### Files created in this branch:
+  * UserControllerTest.java
+  
+  
+## Development 19
+
+In this branch we will create an integration test in order to check that the application is working properly from the controller until it reach the database (UserControllerIT).
+
+### How did we get here:
+  * Create a test class UserControllerIT
+  * Use custom Spring annotation(@SpringBootTest, @TestPropertySource, @AutoConfigureMockMvc) for load the entire SpringContext and set a custom property file.
+  * Here we can check if the request which pass through our application from the controller until the database behaves as we expect.
+
+### Check if it works for you:
+  * Run the test by hitting **CTRL + SHIFT + F10**
+  * The test should pass (be green)
+
+### Files created in this branch:
+  * UserControllerIT.java
