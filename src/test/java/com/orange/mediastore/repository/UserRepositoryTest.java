@@ -12,14 +12,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataMongoTest
 public class UserRepositoryTest {
+    public static final String ALEX = "Alex" + UUID.randomUUID();
     private final Set<String> MEDIAS = new HashSet<>(Arrays.asList("id1", "id2"));;
-    private User USER = createUser("Alex");
+    private User USER = createUser(ALEX);
 
     @Autowired
     private UserRepository userRepository;
@@ -44,11 +46,11 @@ public class UserRepositoryTest {
 
     @Test
     public void givenAnUser_whenSearchForHim_thenFindUserInDB() {
-        User alex = userRepository.findByUsername("Alex");
+        User alex = userRepository.findByUsername(ALEX);
 
         assertThat(alex).isNotNull();
         assertThat(alex).extracting("username", "password","favouriteMovieIds")
-                .contains("Alex", "Test@123!", MEDIAS);
+                .contains(ALEX, "Test@123!", MEDIAS);
 
     }
 }
