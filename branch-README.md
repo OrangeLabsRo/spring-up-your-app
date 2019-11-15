@@ -173,6 +173,24 @@ In this branch we tie it all together by modifying our original endpoint to retr
     * You should see a list with all our movies and shows
     * Adding the "?title=_something_" paramete should filter the results
     
+## Development 15
+
+In this branch we will create a Controller Advice used for handling exceptions.
+
+### How did we get here:
+  * Create custom exceptions like: UserAlreadyExistsException, UserNotLoggedInException
+  * Create a Controller Advice which will intercept these exceptions that will be thrown by the application when
+  the constraints are violated
+  
+### Check if it works for you:
+  * Run the application by hitting **SHIFT + F10**
+  * Open a browser and access swagger-ui: http://localhost:8090/swagger-ui.html
+       * You should access register endpoint and create an user. The request should execute successfully
+       * Try to register again the same user. You should receive 409, being intercepted by the controller advice
+  
+### Files created in this branch:
+  * RestExceptionHandler.java, UserNotLoggedInException.java, UserAlreadyExistsException.java
+    
 
 ## Development 16
 
