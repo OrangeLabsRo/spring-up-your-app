@@ -3,10 +3,10 @@ package com.orange.mediastore;
 import java.time.LocalDateTime;
 
 public class ApiError {
-    private final int statusCode;
-    private final String message;
-    private final String details;
-    private final LocalDateTime dateTime;
+    private int statusCode;
+    private String message;
+    private String details;
+    private LocalDateTime dateTime;
 
     public ApiError(int statusCode, String message, String details, LocalDateTime dateTime) {
         this.statusCode = statusCode;

@@ -1,3 +1,0 @@
-window.config= {
-    baseURL: ""
-}
