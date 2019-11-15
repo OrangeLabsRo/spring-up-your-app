@@ -3,6 +3,9 @@ package com.orange.moviestore.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+import java.util.Set;
+
 @Document(collection = "movies")
 public class Movie {
     @Id
@@ -10,6 +13,42 @@ public class Movie {
     private String title;
     private String director;
     private Long year;
+    private LocalDate release;
+    private Set<String> actors;
+    private double averageRating;
+    private String imageURL;
+
+    public LocalDate getRelease() {
+        return release;
+    }
+
+    public void setRelease(LocalDate release) {
+        this.release = release;
+    }
+
+    public Set<String> getActors() {
+        return actors;
+    }
+
+    public void setActors(Set<String> actors) {
+        this.actors = actors;
+    }
+
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 
     public String getId() {
         return id;
