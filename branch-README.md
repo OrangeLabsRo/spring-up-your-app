@@ -224,3 +224,20 @@ In this branch we will create a test for the service layer of the application (U
 
 ### Files created in this branch:
   * UserServiceTest.java, TestUtils.java
+  
+## Development 18
+
+In this branch we will create a test for the controller layer of the application (UserController).
+
+### How did we get here:
+  * Create a test class UserControllerTest
+  * Use custom Spring annotation(@WebMvcTest) for load just a slice of Spring context
+  * Only Spring MVC and web context are loaded for test the requests
+
+
+### Check if it works for you:
+  * Run the test by hitting **CTRL + SHIFT + F10**
+  * The test should pass (be green)
+
+### Files created in this branch:
+  * UserControllerTest.java
