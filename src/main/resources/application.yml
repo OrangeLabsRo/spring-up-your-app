@@ -6,4 +6,14 @@ spring:
     mongodb:
       uri: mongodb+srv://test:test@cluster0-kacdx.mongodb.net/test?retryWrites=true&w=majority
 
-omdb.url: http://www.omdbapi.com
+omdb:
+  url: http://www.omdbapi.com
+  api-key: 37a4cb
+
+movie-store:
+  movie-list:
+    - joker
+    - star wars
+    - inception
+    - frozen
+    - shrek

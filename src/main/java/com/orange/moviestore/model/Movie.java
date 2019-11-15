@@ -12,7 +12,6 @@ public class Movie {
     private String id;
     private String title;
     private String director;
-    private Long year;
     private LocalDate release;
     private Set<String> actors;
     private double averageRating;
@@ -74,11 +73,4 @@ public class Movie {
         this.director = director;
     }
 
-    public Long getYear() {
-        return year;
-    }
-
-    public void setYear(Long year) {
-        this.year = year;
-    }
 }
