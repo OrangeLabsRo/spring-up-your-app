@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
@@ -16,13 +18,16 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
+@ActiveProfiles("test")
 @DataMongoTest
 public class UserRepositoryTest {
-    private final Set<String> MEDIAS = new HashSet<>(Arrays.asList("id1", "id2"));;
+    private final Set<String> MEDIAS = new HashSet<>(Arrays.asList("id1", "id2"));
     private User USER = createUser("Alex");
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Before
     public void setUp() throws Exception {
@@ -31,7 +36,8 @@ public class UserRepositoryTest {
 
     @After
     public void tearDown() throws Exception {
-        userRepository.delete(USER);
+        //userRepository.delete(USER);
+        mongoTemplate.dropCollection("users");
     }
 
     private User createUser(String username) {
