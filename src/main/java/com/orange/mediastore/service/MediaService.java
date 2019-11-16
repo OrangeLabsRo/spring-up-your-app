@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class MediaService {
@@ -23,5 +24,9 @@ public class MediaService {
 
     public List<Media> getMediaByTitle(String title) {
         return mediaRepository.findAllByTitleMatchesRegex("(?i).*" + title + ".*");
+    }
+
+    public Set<Media> getMoviesByIds(Set<String> favouritesIds) {
+        return mediaRepository.findAllById(favouritesIds);
     }
 }
