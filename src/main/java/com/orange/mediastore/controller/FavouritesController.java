@@ -2,9 +2,7 @@ package com.orange.mediastore.controller;
 
 import com.orange.mediastore.model.Media;
 import com.orange.mediastore.service.FavouritesService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -25,11 +23,13 @@ public class FavouritesController {
         return favouritesService.getFavourites();
     }
 
-    public void addToFavourites(String mediaId) {
-
+    @PutMapping(value = "/favourites")
+    public void addToFavourites(@RequestParam String mediaId) {
+        favouritesService.addToFavourites(mediaId);
     }
 
-    public void removeFromFavourites(String mediaId) {
-
+    @DeleteMapping(value = "/favourites")
+    public void removeFromFavourites(@RequestParam String mediaId) {
+        favouritesService.remove(mediaId);
     }
 }
