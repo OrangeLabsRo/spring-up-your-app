@@ -3,7 +3,7 @@ server.port: 8090
 spring:
   data:
     mongodb:
-      uri: add_your_uri_here
+      uri: mongodb+srv://ruby:ruby@cluster0-ov4q5.mongodb.net/security?retryWrites=true&w=majority
 
 media-service:
   available-media:
