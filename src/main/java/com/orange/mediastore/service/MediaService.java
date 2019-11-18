@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class MediaService {
@@ -27,7 +28,10 @@ public class MediaService {
     }
 
     public Set<Media> getAllById(Set<String> ids) {
-        return mediaRepository.findAllById(ids);
+        return mediaRepository.findAll()
+                .stream()
+                .filter(media -> ids.contains(media.id))
+                .collect(Collectors.toSet());
     }
 
 }

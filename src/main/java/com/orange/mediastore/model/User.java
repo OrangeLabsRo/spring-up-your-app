@@ -42,6 +42,7 @@ public class User implements UserDetails {
     }
 
     public Set<String> getFavouriteMovieIds() {
+
         return favouriteMovieIds;
     }
 

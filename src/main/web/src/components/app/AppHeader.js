@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import InputBase from '@material-ui/core/InputBase';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -94,16 +94,26 @@ function AppHeader(props) {
         setState({...state, isOpened: open});
     };
 
-    const openLogin = (e) => {
+    const openLogin = () => {
         props.history.push(LOGIN_PAGE_ROUTE);
     };
 
-    const openHome = (e) => {
+    const openHome = () => {
         props.history.push(HOME_PAGE_ROUTE);
     };
 
-    const openFavorites = (e) => {
+    const openFavorites = () => {
         props.history.push(FAVORITES_PAGE_ROUTE);
+    };
+
+    const onSearch = (e) => {
+        if(e.keyCode === 13){
+            console.log(e.target.value);
+            props.history.push({
+                pathname: HOME_PAGE_ROUTE,
+                query: e.target.value
+            });
+        }
     };
 
     const classes = useStyles();
@@ -117,11 +127,11 @@ function AppHeader(props) {
             style={{marginTop: '64px'}}
         >
             <List>
-                <ListItem button key="home" onClick = {openHome}>
+                <ListItem button key="home" onClick={openHome}>
                     <ListItemIcon ><HomeIcon/></ListItemIcon>
                     <ListItemText primary="Home" />
                 </ListItem>
-                <ListItem button key="favorites" onClick = {openFavorites}>
+                <ListItem button key="favorites" onClick={openFavorites}>
                     <ListItemIcon ><FavoitesIcon/></ListItemIcon>
                     <ListItemText primary="Favorites" />
                 </ListItem>
@@ -156,9 +166,10 @@ function AppHeader(props) {
                                 input: classes.inputInput,
                             }}
                             inputProps={{'aria-label': 'search'}}
+                            onKeyDown={(e) => onSearch(e)}
                         />
                     </div>
-                    <Button color="inherit" onClick = {openLogin}>Login</Button>
+                    <Button color="inherit" onClick={openLogin}>Login</Button>
                     <Drawer open={state.isOpened} onClose={toggleDrawer(false)}>
                         {sideList()}
                     </Drawer>
